@@ -49,6 +49,11 @@ clean:
 #include "udp_tunnel.h"
 ```
 
+- Comment out the following line in qlcnic_main.c:
+```
+/*netdev->udp_tunnel_nic_info = &qlcnic_udp_tunnels;*/
+```
+
 - Copy udp_tunnel.h from linux/include/net/udp_tunnel.h to the current directory
 
 - Edit udp_tunnel.h so that the following conditional section looks like this (around line 294):
