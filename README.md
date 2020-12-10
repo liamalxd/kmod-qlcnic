@@ -14,7 +14,7 @@ Using this I was able to compile a working version of the driver for the CentOS 
 ---
 Modifications to the source driver
 ---
-In order to get the driver to compile on CentOS 8.3 (with gcc-8.3.1-5.1), The following was modified in the original driver:
+In order to get the driver to compile on CentOS 8.3 (with gcc-8.3.1-5.1), the following was carried out:
 
 - Install kernel devel/source code
 ```
