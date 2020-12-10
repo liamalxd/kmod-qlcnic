@@ -16,9 +16,9 @@ Modifications to the source driver
 ---
 In order to get the driver to compile on CentOS 8.3 (with gcc-8.3.1-5.1), the following was carried out:
 
-- Install kernel devel/source code
+- Install the kernel devel/header packages
 ```
-dnf install kernel-devel
+dnf install kernel-devel kernel-headers
 ```
 
 - Checkout the driver
