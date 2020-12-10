@@ -7,6 +7,8 @@ After some digging it looks like these are actually QLogic QLE3242 cards.
 
 I'm currently running CentOS 8.3 on the server that NIC is going to call home, unfortunately it looks like the last driver that was produced for this OS was around CentOS 7.2. It also doesn't look like elrepo even has a kmod rpm or driver disk for this.
 
+CentOS also confirm (if there was an inbuilt driver in 7.x) that the driver no longer exists in CentOS 8: https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html-single/considerations_in_adopting_rhel_8/index
+
 Fortunately, there's a maintained qlcnic driver in the Linux kernel repository (https://github.com/torvalds/linux/tree/master/drivers/net/ethernet/qlogic/qlcnic)
 
 Using this I was able to compile a working version of the driver for the CentOS 8.3 kernel.
