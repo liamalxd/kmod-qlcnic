@@ -9,7 +9,7 @@ I'm currently running CentOS 8.3 on the server that NIC is going to call home, u
 
 Fortunately, there's a maintained qlcnic driver in the Linux kernel repository (https://github.com/torvalds/linux/tree/master/drivers/net/ethernet/qlogic/qlcnic)
 
-Using this I was able to compile a working version of the driver using the CentOS 8.3 kernel.
+Using this I was able to compile a working version of the driver for the CentOS 8.3 kernel.
 
 ---
 Modifications to the source driver
