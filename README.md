@@ -31,7 +31,7 @@ git clone https://github.com/torvalds/linux.git
 cd linux/drivers/net/ethernet/qlogic/qlcnic
 ```
 
-- Added the following to the Makefile:
+- Add the following to the Makefile:
 ```
 obj-m += qlcnic-y qlcnic.o
 
@@ -42,13 +42,14 @@ clean:
         make -C /lib/modules/$(shell uname -r)/build M=$(PWD) clean
 ```
 
-- added the following to qlcnic_main.c:
+- Add the following to the top of qlcnic_main.c:
 ```
 #include "udp_tunnel.h"
 ```
-(and copy this from linux/include/net/udp_tunnel.h to the working directory)
 
-- Edit udp_tunnel.h so that the 'define udp_tunnel_nic_ops' section looks like this:
+- Copy udp_tunnel.h from linux/include/net/udp_tunnel.h to the current directory
+
+- Edit udp_tunnel.h so that the following conditional section looks like this (around line 294):
 ```
 /*#ifdef CONFIG_INET
 extern const struct udp_tunnel_nic_ops *udp_tunnel_nic_ops;
@@ -58,6 +59,7 @@ extern const struct udp_tunnel_nic_ops *udp_tunnel_nic_ops;
 
 /*#endif*/
 ```
+(The driver will compile without this step, but it will throw an undefined symbol error for 'udp_tunnel_nic_ops' when you try to load the driver)
 
 - Edit qlcnic_ethtool.c and change the two 'fallthrough;' lines to 'break;'
 
