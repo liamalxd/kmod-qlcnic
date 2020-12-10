@@ -16,6 +16,21 @@ Modifications to the source driver
 ---
 In order to get the driver to compile on CentOS 8.3 (with gcc-8.3.1-5.1), The following was modified in the original driver:
 
+- Install kernel devel/source code
+```
+dnf install kernel-devel
+```
+
+- Checkout the driver
+```
+git clone https://github.com/torvalds/linux.git
+```
+
+- Navigate to the driver 
+```
+cd linux/drivers/net/ethernet/qlogic/qlcnic
+```
+
 - Added the following to the Makefile:
 ```
 obj-m += qlcnic-y qlcnic.o
@@ -46,13 +61,18 @@ extern const struct udp_tunnel_nic_ops *udp_tunnel_nic_ops;
 
 - Edit qlcnic_ethtool.c and change the two 'fallthrough;' lines to 'break;'
 
+- Compile the driver
+```
+make
+```
+
 ---
 Installation
 ---
 
 **Keep in mind, you will need to rebuild this driver if you update your specific kernel version**
 
-After the above modifications you should be able to install the kernel-devel package and run 'make' to compile the driver, after the compile has finished, you should have 'qlcnic.ko' which should be placed on the box you want to load the driver on.
+Once the compile has finished, you should have 'qlcnic.ko' which should be placed on the box you want to load the driver on.
 
 In my case I placed the driver (located in this repo as qlcnic_el8_3.ko) in /usr/lib/modules/4.18.0-240.el8.x86_64/extra/qlcnic/qlcnic.ko
 
